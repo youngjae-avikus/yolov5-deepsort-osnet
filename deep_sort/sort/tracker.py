@@ -122,6 +122,7 @@ class Tracker:
         )
         app_gate = app_cost > self.metric.matching_threshold
         # Now combine and threshold
+        # print(f"_lambda: {self._lambda}")
         cost_matrix = self._lambda * pos_cost + (1 - self._lambda) * app_cost
         cost_matrix[np.logical_or(pos_gate, app_gate)] = linear_assignment.INFTY_COST
         # Return Matrix
